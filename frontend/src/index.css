@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply font-body bg-ink text-slate-100 antialiased;
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(124,139,255,0.18), transparent 38%),
+    radial-gradient(circle at 85% 0%, rgba(154,92,247,0.18), transparent 42%),
+    radial-gradient(circle at 50% 100%, rgba(74,222,156,0.08), transparent 40%);
+  background-attachment: fixed;
+}
+
+.light body,
+.light {
+  @apply bg-slate-50 text-slate-900;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(124,139,255,0.4); border-radius: 999px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-xl bg-white/[0.06] border border-white/[0.08] shadow-glass;
+  }
+  .light .glass {
+    @apply bg-white/70 border-slate-200 shadow-lg;
+  }
+  .glass-card {
+    @apply glass rounded-3xl p-6 transition-all duration-300;
+  }
+  .glass-card:hover {
+    @apply border-indigo-400/30 shadow-glow;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 font-semibold text-white
+    bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400
+    transition-all duration-300 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-400/40 hover:-translate-y-0.5;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 font-semibold
+    glass hover:border-indigo-400/40 transition-all duration-300;
+  }
+  .input-field {
+    @apply w-full rounded-2xl px-4 py-3 bg-white/5 border border-white/10 outline-none
+    focus:border-indigo-400/60 focus:bg-white/10 transition-all placeholder:text-slate-400 text-sm;
+  }
+  .light .input-field {
+    @apply bg-white border-slate-200 placeholder:text-slate-400;
+  }
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold;
+  }
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-indigo-300/80;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #7C8BFF 0%, #B389F9 60%, #FF9FD6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
